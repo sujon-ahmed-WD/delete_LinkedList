@@ -22,18 +22,27 @@
     tail->next=newnode;
     tail=newnode;
  }
- void delete_head(Node*&head)
+ void delete_any_pos(Node*&head,int idx)
  {
-    Node* deletenode=head;
-    head=head->next;
-    delete deletenode;
+    Node* temp=head;
+    for(int i=1; i<idx;i++)  // o tahaka soro 
+    {
+        temp=temp->next;
+    
+    }
+    Node* deletenode=temp->next;
+    //  temp->next=deletenode->next;
+    temp->next=temp->next->next;
+     delete deletenode;
+
+
  }
  void print (Node*head)
  {
     Node*tmp=head;
     while(tmp!=NULL)
     {
-        cout<<tmp->val;
+        // cout<<tmp->val<<" ";
         tmp=tmp->next;
     }
  }
@@ -51,7 +60,7 @@
         }
         add_tail(head,tail,val);
     }
-    delete_head(head);
+    delete_any_pos(head,2);
     print(head);
     return 0;
  }

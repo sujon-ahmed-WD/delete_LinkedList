@@ -22,11 +22,17 @@
     tail->next=newnode;
     tail=newnode;
  }
- void delete_head(Node*&head)
+ void delete_any_Pos(Node*head,int idx)
  {
-    Node* deletenode=head;
-    head=head->next;
+    Node*temp=head;
+    for(int i=1; i<idx; i++)
+    {
+        temp=temp->next;
+    }
+    Node* deletenode=temp->next;
+    temp->next=temp->next->next;
     delete deletenode;
+     
  }
  void print (Node*head)
  {
@@ -51,7 +57,7 @@
         }
         add_tail(head,tail,val);
     }
-    delete_head(head);
+    delete_any_Pos(head,1);
     print(head);
     return 0;
  }
