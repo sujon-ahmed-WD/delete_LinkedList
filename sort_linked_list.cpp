@@ -22,19 +22,18 @@
     tail->next=newnode;
     tail=newnode;
  }
- void delete_any_pos(Node*&head,Node*&tail,int idx)  // temp!=NULL//  
+ void sort_link_list(Node*head)
  {
-    Node* temp=head;
-    for(int i=1; i<idx; i++)
+        for( Node*i=head; i->next!=NULL; i=i->next)
     {
-        temp=temp->next;
+        for(Node*j=i->next; j!=NULL; j=j->next)
+        {
+            if(i->val>j->val)
+            {
+                swap(i->val,j->val);
+            }
+        }
     }
-    Node* deletenode=temp->next;
-    temp->next=temp->next->next;
-    delete deletenode;
-    tail=temp;
-
-
  }
  void print (Node*head)
  {
@@ -59,7 +58,7 @@
         }
         add_tail(head,tail,val);
     }
-    delete_any_pos(head,tail,3);
+    sort_link_list(head);
     print(head);
     return 0;
  }
